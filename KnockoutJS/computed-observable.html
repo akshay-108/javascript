@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed observable</title>
+    <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+   </head>
+</head>
+<body>
+    <p>Enter frist number: <strong> <input data-bind="value:a"> </strong> </p>
+    <p>Enter second number: <strong> <input data-bind="value:b"> </strong> </p>
+    <p>Total: <strong data-bind="text:total"> </strong> </p>
+
+    <script>
+        function myViewmodel()
+        {
+            this.a=ko.observable(10);
+            this.b=ko.observable(40);
+
+            this.total=ko.computed(function()
+            {
+                if(typeof(this.a())!=="number" || typeof(this.b())!=="number")
+                {
+                    this.a(Number(this.a()));
+                    this.b(Number(this.b()));
+                }
+                avg = (this.a()+this.b())/2
+                return avg;
+            },this)
+        }
+       
+        ko.applyBindings(new myViewmodel());
+
+    </script>
+</body>
+</html>
