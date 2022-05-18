@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>
+        jQuery ajax method
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="div">
+        <h1>Hello World</h1>
+        <h2>jQuery ajax method</h2>
+        <button>click me</button>
+    </div>
+    <div class="result">
+
+    </div>
+    <script>
+        $(document).ready(function()
+        {
+            $('button').click(function()
+            {
+                $.ajax({
+                    url:'1_ajax-method.html',
+                    success:function(response)
+                    {
+                        $('.result').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
